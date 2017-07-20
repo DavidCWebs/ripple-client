@@ -45,7 +45,9 @@ export const oldSimpleJsonRpc = ({commit}) => {
   })
 }
 
-export const simpleJsonRpc = ({commit}) => {
+export const simpleJsonRpc = ({commit}, accountNumber) => {
+  console.log(accountNumber)
+  baseCase.account = accountNumber
 
   var socket = new WebSocket('wss://s1.ripple.com/')
 
