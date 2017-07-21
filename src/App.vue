@@ -1,15 +1,20 @@
 <template>
   <div id="app">
-    <img class="logo-container" src="./assets/carawebs-icon.svg">
+    <!-- <img class="logo-container" src="./assets/carawebs-icon.svg"> -->
     <div class="container">
+      <top-header></top-header>
       <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
+import TopHeader from '@/components/common/TopHeader'
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    TopHeader
+  }
 }
 </script>
 

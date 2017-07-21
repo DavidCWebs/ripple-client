@@ -1,21 +1,9 @@
 /* eslint-disable */
-// const RippleAPI = require('ripple-lib').RippleAPI
 import axios from 'axios'
+import rippleKeypair from 'ripple-keypairs'
 // const host = 'wss://s1.ripple.com/'
 const host = 'https://s1.ripple.com:51234/'
-const rippleLib = require('ripple-lib')
-const RippleAPI = rippleLib.RippleAPI
 
-// export const getAddressInfo = ({ commit }) => {
-//   var api = new RippleAPI({
-//     server: host
-//   })
-//   api.connect().then(() => {
-//     return api.getServerInfo()
-//   }).then((serverInfo) => {
-//     commit('setAddressInfo', serverInfo)
-//   }).catch(console.error)
-// }
 let accountTest = {
   "method": "account_info",
   "params": [
@@ -35,7 +23,6 @@ const baseCase = {
   "queue": true
 }
 export const oldSimpleJsonRpc = ({commit}) => {
-  // axios.post('https://clsrv.transifex.com/', baseCase).then((response) => {
   axios.post('wss://s1.ripple.com/push:443', baseCase).then((response) => {
     console.log("RESPONSE: " + response)
     commit('setAddressInfo', response)
@@ -58,4 +45,13 @@ export const simpleJsonRpc = ({commit}, accountNumber) => {
       commit('setAddressInfo', response.data)
     }
   }
+}
+
+export const generateKeypair = ({commit}, userInputEntropy) => {
+  const seed = rippleKeypair.generateSeed()
+  const keypair = rippleKeypair.deriveKeypair(seed)
+  const address = rippleKeypair.deriveAddress(keypair.publicKey)
+  commit('setDerivedAddress', address)
+  commit('setDerivedKeypair', keypair)
+  console.log(keypair)
 }
