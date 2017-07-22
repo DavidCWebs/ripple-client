@@ -10,6 +10,10 @@ export const derivedKeypair = (state) => {
   return state.derivedKeypair
 }
 
-export const addressInfo = (state) => {
-  return state.addressInfo
+export const accountInfo = (state) => {
+  return state.accountInfo
+}
+
+export const restAccountInfo = (state) => {
+  return state.restAccountInfo
 }

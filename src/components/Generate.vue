@@ -3,7 +3,7 @@
     <h1 class="title is-1">{{ msg }}</h1>
     <form>
       <label for="enter-entropy">Enter entropy string (if required)
-        <input id="enter-entropy" type="text" v-model="userInputEntropy">
+        <input id="enter-entropy" type="text" size="60" v-model="userInputEntropy">
       </label>
       <div>
         <button v-on:click="generateKeypair(userInputEntropy)">Generate</button>

@@ -1,17 +1,15 @@
 <template>
   <nav class="navbar">
     <div class="navbar-brand">
-      <a class="navbar-item" href="http://bulma.io">
+      <a class="navbar-item" href="https://carawebs.com">
         <img src="../../assets/carawebs-icon.svg" alt="Carawebs" width="40" height="40"> Carawebs
       </a>
-
-      <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
+      <a class="navbar-item is-hidden-desktop" href="#" target="_blank">
         <span class="icon" style="color: #333;">
           <i class="fa fa-github"></i>
         </span>
       </a>
-
-      <a class="navbar-item is-hidden-desktop" href="https://twitter.com/jgthms" target="_blank">
+      <a class="navbar-item is-hidden-desktop" href="https://twitter.com/DavidRedBranch" target="_blank">
         <span class="icon" style="color: #55acee;">
           <i class="fa fa-twitter"></i>
         </span>
@@ -26,7 +24,10 @@
 
     <div id="navMenuExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item " href="http://bulma.io/">
+        <router-link :to="{ name: 'home'}" class="navbar-item">Home</router-link>
+        <router-link :to="{ name: 'generate'}" class="navbar-item">Generate</router-link>
+        <router-link :to="{ name: 'api-interface'}" class="navbar-item">REST API</router-link>
+        <a class="navbar-item " href="https://carawebs.com/">
           Home
         </a>
         <div class="navbar-item has-dropdown is-hoverable">

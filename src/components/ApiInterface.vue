@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
     <h1 class="title is-1">{{ msg }}</h1>
+    <p>See: <a href="https://ripple.com/build/data-api-v2">Ripple API Docs</a></p>
+    <p>Sample: <pre>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</pre></p>
     <form>
       <label for="account-number">Enter account Number:
         <input id="account-number" type="text" v-model="accountNumber">
@@ -12,16 +14,16 @@
       <p v-else>No Account Number Entered</p>
     </form>
     <hr>
-    <div class="columns" v-if="addressInfo.result">
+    <div class="columns" v-if="accountInfo">
       <div class="column">
         <ul>
-          <li v-for="(value, key) in addressInfo.result.account_data">
-            {{ key }}: {{ value }}
+          <li v-for="(value, key) in accountInfo.account_data">
+            <strong>{{ key }}:</strong> {{ value }}
           </li>
         </ul>
       </div>
       <div class="column">
-        <img :src="addressInfo.result.account_data.urlgravatar" alt="" v-if="addressInfo.result.account_data.urlgravatar">
+        <!-- <img :src="accountInfo.result.account_data.urlgravatar" alt="" v-if="accountInfo.result.account_data.urlgravatar"> -->
       </div>
     </div>
   </div>
@@ -30,45 +32,22 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'hello',
+  name: 'api-interface',
   data () {
     return {
       accountNumber: '',
-      msg: 'Carawebs Simple Ripple App'
+      msg: 'REST API Interface'
     }
   },
   computed: {
     ...mapGetters({
-      storedArray: 'storedArray',
-      addressInfo: 'addressInfo'
+      accountInfo: 'restAccountInfo'
     })
   },
   methods: {
     ...mapActions({
-      getAddressInfo: 'getAddressInfo',
-      fetch: 'simpleJsonRpc'
+      fetch: 'getRestAccountInfo'
     })
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  /*display: inline-block;*/
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>

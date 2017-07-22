@@ -22,29 +22,31 @@ const baseCase = {
   "ledger_index": "current",
   "queue": true
 }
-export const oldSimpleJsonRpc = ({commit}) => {
-  axios.post('wss://s1.ripple.com/push:443', baseCase).then((response) => {
-    console.log("RESPONSE: " + response)
-    commit('setAddressInfo', response)
-  }).catch((error) => {
-    console.log('Error Condition')
-    console.error(error)
-  })
-}
 
-export const simpleJsonRpc = ({commit}, accountNumber) => {
-  console.log(accountNumber)
+// Connect by Websocket
+// export const simpleJsonRpc = ({commit}, accountNumber) => {
+export const getAccountInfo = ({commit}, accountNumber) => {
+  console.log("ACTION: "+accountNumber)
   baseCase.account = accountNumber
-
   var socket = new WebSocket('wss://s1.ripple.com/')
-
   socket.onopen = () => {
     socket.send(JSON.stringify(baseCase))
     socket.onmessage = function(response) {
-      console.log(response.data) // upon message
-      commit('setAddressInfo', response.data)
+      console.log("ACCT: " + response.data) // upon message
+      commit('setAccountInfo', response.data)
     }
   }
+}
+
+// REST API
+export const getRestAccountInfo = ({commit}, accountNumber) => {
+  axios.get(`https://data.ripple.com/v2/accounts/${accountNumber}`)
+  .then((response) => {
+    console.log(response);
+    commit('setRestAccountInfo', response.data)
+  }).catch((error) => {
+    console.error(error)
+  })
 }
 
 export const generateKeypair = ({commit}, userInputEntropy) => {

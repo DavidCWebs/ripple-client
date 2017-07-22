@@ -1,6 +1,10 @@
 // Address info
-export const setAddressInfo = (state, info) => {
-  state.addressInfo = JSON.parse(info)
+export const setAccountInfo = (state, info) => {
+  state.accountInfo = JSON.parse(info)
+}
+
+export const setRestAccountInfo = (state, info) => {
+  state.restAccountInfo = info
 }
 
 export const setDerivedAddress = (state, address) => {

@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+import Home from '@/components/Home'
 import Generate from '@/components/Generate'
+import ApiInterface from '@/components/ApiInterface'
 
 Vue.use(Router)
 
@@ -9,13 +10,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
+      name: 'home',
+      component: Home
     },
     {
       path: '/generate',
-      name: 'Generate',
+      name: 'generate',
       component: Generate
+    },
+    {
+      path: '/api-interface',
+      name: 'api-interface',
+      component: ApiInterface
     }
   ]
 })
