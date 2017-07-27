@@ -17,3 +17,7 @@ export const accountInfo = (state) => {
 export const restAccountInfo = (state) => {
   return state.restAccountInfo
 }
+
+export const restAccountTransactions = (state) => {
+  return state.restAccountTransactions
+}

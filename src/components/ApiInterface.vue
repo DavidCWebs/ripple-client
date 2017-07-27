@@ -9,7 +9,8 @@
       </label>
       <div v-if="accountNumber">
         <p>Account Number {{ accountNumber }}</p>
-        <button v-on:click="fetch(accountNumber)">Fetch</button>
+        <button v-on:click="fetchAccount(accountNumber)">Fetch details</button>
+        <button v-on:click="fetchTransactions(accountNumber)">Get Transactions</button>
       </div>
       <p v-else>No Account Number Entered</p>
     </form>
@@ -21,9 +22,7 @@
             <strong>{{ key }}:</strong> {{ value }}
           </li>
         </ul>
-      </div>
-      <div class="column">
-        <!-- <img :src="accountInfo.result.account_data.urlgravatar" alt="" v-if="accountInfo.result.account_data.urlgravatar"> -->
+        <div class="card" v-for="transaction in transactions.transactions"><pre>{{ transaction | pretty }}</pre></div>
       </div>
     </div>
   </div>
@@ -41,12 +40,14 @@ export default {
   },
   computed: {
     ...mapGetters({
-      accountInfo: 'restAccountInfo'
+      accountInfo: 'restAccountInfo',
+      transactions: 'restAccountTransactions'
     })
   },
   methods: {
     ...mapActions({
-      fetch: 'getRestAccountInfo'
+      fetchAccount: 'getRestAccountInfo',
+      fetchTransactions: 'getRestAccountTransactions'
     })
   }
 }

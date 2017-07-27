@@ -49,6 +49,15 @@ export const getRestAccountInfo = ({commit}, accountNumber) => {
   })
 }
 
+export const getRestAccountTransactions = ({commit}, accountNumber) => {
+  axios.get(`https://data.ripple.com/v2/accounts/${accountNumber}/transactions`)
+  .then((response) => {
+    commit('setRestAccountTransactions', response.data)
+  }).catch((error) => {
+    console.error(error)
+  })
+}
+
 export const generateKeypair = ({commit}, userInputEntropy) => {
   const seed = rippleKeypair.generateSeed()
   const keypair = rippleKeypair.deriveKeypair(seed)

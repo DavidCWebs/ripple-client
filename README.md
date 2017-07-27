@@ -2,7 +2,11 @@
 
 > Ripple client with Vue.js and Webpack
 
-Work in progress.
+This is a simple Ripple client, loosely based on [https://github.com/jatchili/minimalist-ripple-client](https://github.com/jatchili/minimalist-ripple-client).
+
+The goal is to make dependencies transparent and auditable.
+
+**This project is in an experimental stage** - uses Websockets and the Ripple REST API.
 
 ## Build Setup
 
@@ -28,5 +32,3 @@ npm run e2e
 # run all tests
 npm test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
