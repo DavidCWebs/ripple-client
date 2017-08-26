@@ -21,3 +21,11 @@ export const restAccountInfo = (state) => {
 export const restAccountTransactions = (state) => {
   return state.restAccountTransactions
 }
+
+export const qrcode = (state) => {
+  return state.qrcode
+}
+
+export const rippleAddressData = (state) => {
+  return state.rippleAddressData
+}

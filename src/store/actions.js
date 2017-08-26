@@ -1,6 +1,7 @@
 /* eslint-disable */
 import axios from 'axios'
 import rippleKeypair from 'ripple-keypairs'
+import qrcode from 'qrcode'
 // const host = 'wss://s1.ripple.com/'
 const host = 'https://s1.ripple.com:51234/'
 
@@ -24,7 +25,6 @@ const baseCase = {
 }
 
 // Connect by Websocket
-// export const simpleJsonRpc = ({commit}, accountNumber) => {
 export const getAccountInfo = ({commit}, accountNumber) => {
   console.log("ACTION: "+accountNumber)
   baseCase.account = accountNumber
@@ -58,11 +58,41 @@ export const getRestAccountTransactions = ({commit}, accountNumber) => {
   })
 }
 
+const generateQrcode = ({}, value) => {
+  let qr = ''
+  qrcode.toDataURL(value, function(err, dataUrl) {
+    qr = dataUrl
+  })
+  return qr
+}
+
 export const generateKeypair = ({commit}, userInputEntropy) => {
-  const seed = rippleKeypair.generateSeed()
-  const keypair = rippleKeypair.deriveKeypair(seed)
+  const secret = rippleKeypair.generateSeed()
+  const keypair = rippleKeypair.deriveKeypair(secret)
   const address = rippleKeypair.deriveAddress(keypair.publicKey)
   commit('setDerivedAddress', address)
   commit('setDerivedKeypair', keypair)
-  console.log(keypair)
+  commit('setRippleAddressData', {
+    "secret": {
+      "value": secret,
+      "qrcode": generateQrcode({}, secret)
+    },
+    "address": {
+      "value": address,
+      "qrcode": generateQrcode({}, address)
+    }
+  })
+}
+
+// const generateQrcode = (value) => {
+//   console.log("here!")
+//   qrcode.toDataURL(value, function(err, url) {
+//     return dataUrl
+//   })
+// }
+
+export const generateQR = ({commit}, value) => {
+  qrcode.toDataURL(value, function(err, url) {
+    commit('setQR', url)
+  })
 }

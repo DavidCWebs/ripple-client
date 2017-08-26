@@ -25,6 +25,12 @@
         <img :src="accountInfo.result.account_data.urlgravatar" alt="" v-if="accountInfo.result.account_data.urlgravatar">
       </div>
     </div>
+    <div class="">
+      <h2 class="title is-2">Resources</h2>
+      <ul>
+        <li><a href="https://ripple.com/build/ripple-test-net/">Get Ripple Test Net Credentials</a></li>
+      </ul>
+    </div>
   </div>
 </template>
 

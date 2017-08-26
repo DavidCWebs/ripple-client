@@ -4,7 +4,7 @@
 
 This is a simple Ripple client, loosely based on [https://github.com/jatchili/minimalist-ripple-client](https://github.com/jatchili/minimalist-ripple-client).
 
-The goal is to make dependencies transparent and auditable.
+The goal is to make dependencies transparent and auditable. [Vuex](https://github.com/vuejs/vuex) is used for centralized state management.
 
 **This project is in an experimental stage** - uses Websockets and the Ripple REST API.
 

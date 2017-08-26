@@ -4,5 +4,7 @@ export default {
   restAccountInfo: [],
   restAccountTransactions: [],
   derivedKeypair: {},
-  derivedAddress: ''
+  derivedAddress: '',
+  rippleAddressData: {},
+  qrcode: ''
 }

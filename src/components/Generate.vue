@@ -14,7 +14,14 @@
       <div class="column" v-if="derivedAddress">
         <h2 class="title is-2">Generated Ripple Address</h2>
         <div>
-          {{ derivedAddress }}
+          <ul>
+            <li>Address: {{ rippleAddressData.address.value }}</li>
+            <li>Secret: {{ rippleAddressData.secret.value }}</li>
+          </ul>
+          <h3 class="title is-3">Public</h3>
+          <img :src="rippleAddressData.address.qrcode" alt="">
+          <h3 class="title is-3">Private</h3>
+          <img :src="rippleAddressData.secret.qrcode" alt="">
         </div>
       </div>
       <div class="column" v-if="derivedKeypair.privateKey">
@@ -27,6 +34,12 @@
         </div>
       </div>
     </div>
+    <h2 class="title is-2">QR Code Test</h2>
+    <input id="enter-qr" type="text" size="60" v-model="userInputQR">
+    <div>
+      <button v-on:click="generateQR(userInputQR)">Generate QR Code</button>
+    </div>
+    <img :src="qrcode" alt="">
   </div>
 </template>
 
@@ -37,40 +50,26 @@ export default {
   data () {
     return {
       userInputEntropy: '',
+      userInputQR: '',
       msg: 'Generate Ripple Keypair'
     }
   },
   computed: {
     ...mapGetters({
       derivedAddress: 'derivedAddress',
-      derivedKeypair: 'derivedKeypair'
+      derivedKeypair: 'derivedKeypair',
+      rippleAddressData: 'rippleAddressData',
+      qrcode: 'qrcode'
     })
   },
   methods: {
     ...mapActions({
-      generateKeypair: 'generateKeypair'
+      generateKeypair: 'generateKeypair',
+      generateQR: 'generateQR'
     })
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  /*display: inline-block;*/
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
+<style scoped></style>
