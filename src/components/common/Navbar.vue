@@ -27,6 +27,7 @@
         <router-link :to="{ name: 'home'}" class="navbar-item">Home</router-link>
         <router-link :to="{ name: 'generate'}" class="navbar-item">Generate</router-link>
         <router-link :to="{ name: 'api-interface'}" class="navbar-item">REST API</router-link>
+        <router-link :to="{ name: 'discover'}" class="navbar-item">Discover</router-link>
       </div>
       <div class="navbar-end">
         <a class="navbar-item" href="https://github.com/jgthms/bulma" target="_blank">

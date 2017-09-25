@@ -29,6 +29,15 @@
       <h2 class="title is-2">Resources</h2>
       <ul>
         <li><a href="https://ripple.com/build/ripple-test-net/">Get Ripple Test Net Credentials</a></li>
+        <li><a href="https://ripple.com/build/rippleapi-beginners-guide/#example-browser-usage">Ripple Docs, API</a></li>
+        <li><a href="https://www.rempe.us/diceware/#eff">Diceware</a></li>
+        <li><a href="https://termhn.github.io/ripplewarpwallet/">Ripple Warp Wallet</a></li>
+      </ul>
+      <hr>
+      <h4 class="title is-4">Bug Notes: "Critical dependency: the request of a dependency is an expression"</h4>
+      <ul>
+        <li><a href="https://stackoverflow.com/a/42425214/3590673">nodeExternals?</a></li>
+        <li><a href="https://github.com/liady/webpack-node-externals">webpack-node-externals</a></li>
       </ul>
     </div>
   </div>
@@ -57,24 +66,3 @@ export default {
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  /*display: inline-block;*/
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>

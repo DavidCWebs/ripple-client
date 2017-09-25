@@ -2,11 +2,12 @@
   <div class="hello">
     <h1 class="title is-1">{{ msg }}</h1>
     <form>
-      <label for="enter-entropy">Enter entropy string (if required)
+      <!-- <label for="enter-entropy">Enter passphrase string (if required)
         <input id="enter-entropy" type="text" size="60" v-model="userInputEntropy">
-      </label>
+      </label> -->
       <div>
-        <button v-on:click="generateKeypair(userInputEntropy)">Generate</button>
+        <p>Click to generate a Ripple Address:</p>
+        <button v-on:click="generateKeypair({entropy: userInputEntropy})">Generate</button>
       </div>
     </form>
     <hr>
@@ -15,13 +16,17 @@
         <h2 class="title is-2">Generated Ripple Address</h2>
         <div>
           <ul>
-            <li>Address: {{ rippleAddressData.address.value }}</li>
-            <li>Secret: {{ rippleAddressData.secret.value }}</li>
+            <li>Address: <pre>{{ rippleAddressData.address.value }}</pre></li>
+            <li>Secret: <pre>{{ rippleAddressData.secret.value }}</pre></li>
           </ul>
-          <h3 class="title is-3">Public</h3>
-          <img :src="rippleAddressData.address.qrcode" alt="">
-          <h3 class="title is-3">Private</h3>
-          <img :src="rippleAddressData.secret.qrcode" alt="">
+          <hr>
+          <button v-on:click="seen = !seen">Show QR Codes</button>
+          <div class="qr-block" v-if="seen">
+            <h3 class="title is-3">Public</h3>
+            <img :src="rippleAddressData.address.qrcode" alt="">
+            <h3 class="title is-3">Private</h3>
+            <img :src="rippleAddressData.secret.qrcode" alt="">
+          </div>
         </div>
       </div>
       <div class="column" v-if="derivedKeypair.privateKey">
@@ -34,12 +39,12 @@
         </div>
       </div>
     </div>
-    <h2 class="title is-2">QR Code Test</h2>
+    <!-- <h2 class="title is-2">QR Code Test</h2>
     <input id="enter-qr" type="text" size="60" v-model="userInputQR">
     <div>
       <button v-on:click="generateQR(userInputQR)">Generate QR Code</button>
     </div>
-    <img :src="qrcode" alt="">
+    <img :src="qrcode" alt=""> -->
   </div>
 </template>
 
@@ -51,21 +56,22 @@ export default {
     return {
       userInputEntropy: '',
       userInputQR: '',
-      msg: 'Generate Ripple Keypair'
+      msg: 'Generate Ripple Keypair',
+      seen: false
     }
   },
   computed: {
     ...mapGetters({
-      derivedAddress: 'derivedAddress',
-      derivedKeypair: 'derivedKeypair',
-      rippleAddressData: 'rippleAddressData',
-      qrcode: 'qrcode'
+      derivedAddress: 'generate/derivedAddress',
+      derivedKeypair: 'generate/derivedKeypair',
+      rippleAddressData: 'generate/rippleAddressData',
+      qrcode: 'generate/qrcode'
     })
   },
   methods: {
     ...mapActions({
-      generateKeypair: 'generateKeypair',
-      generateQR: 'generateQR'
+      generateKeypair: 'generate/generateKeypair',
+      generateQR: 'generate/generateQR'
     })
   }
 }
