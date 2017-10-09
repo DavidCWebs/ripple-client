@@ -15,7 +15,7 @@
         </span>
       </a>
 
-      <div class="navbar-burger burger" data-target="navMenuExample" v-on:click="triggerDropdown">
+      <div class="navbar-burger burger" data-target="navMenuExample" v-on:click="triggerDropdown" v-bind:class="{'is-active': burgerDropdownActive}">
         <span></span>
         <span></span>
         <span></span>

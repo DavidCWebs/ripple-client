@@ -2,9 +2,9 @@
   <div class="hello">
     <h1 class="title is-1">{{ msg }}</h1>
     <form>
-      <!-- <label for="enter-entropy">Enter passphrase string (if required)
+      <label for="enter-entropy">Enter passphrase string as a seed(if required)
         <input id="enter-entropy" type="text" size="60" v-model="userInputEntropy">
-      </label> -->
+      </label>
       <div>
         <p>Click to generate a Ripple Address:</p>
         <button v-on:click="generateKeypair({entropy: userInputEntropy})">Generate</button>
