@@ -1,3 +1,6 @@
 export default {
-  accountInfo: {}
+  accountInfo: {},
+  restAccountInfo: {},
+  restAccountTransactions: {},
+  accountBalances: {}
 }
