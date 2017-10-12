@@ -1,5 +1,5 @@
 export default {
-  accountInfo: {},
+  accountInfo: false,
   restAccountInfo: {},
   restAccountTransactions: {},
   accountBalances: {}

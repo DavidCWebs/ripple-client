@@ -12,22 +12,23 @@
     <hr>
     <div class="columns">
       <div class="column" v-if="accountInfo">
-        <h2 class="title is-2">Ripple Info</h2>
+        <h2 class="title is-3">Account Info</h2>
         <div>
           {{ accountInfo }}
-          <hr>
-          <li v-for="balance in accountBalances.balances">{{ balance.value }} {{ balance.currency }}</li>
+          <h2 class="title is-3">Account Balances</h2>
+          <p v-for="balance in accountBalances.balances">{{ balance.value }} {{ balance.currency }}</p>
           <pre>{{ accountBalances }}</pre>
         </div>
       </div>
     </div>
-    <h2 class="title is-2">References</h2>
+    <h2 class="title is-3">References</h2>
     <ul>
       <li>Account Balances are balances held or owed by a specific XRP ledger account. See: <a href="https://ripple.com/build/data-api-v2/#get-account-balances">Get Account Balances</a></li>
     </ul>
   </div>
 </template>
 <script>
+console.log('crash', this.accountInfo)
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'discover',
@@ -46,7 +47,8 @@ export default {
   methods: {
     ...mapActions({
       getAccountInfo: 'discover/getInfo'
-    })
+    }),
+    showInfo: () => this.accountInfo !== false
   }
 }
 </script>
